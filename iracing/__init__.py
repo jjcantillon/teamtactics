@@ -69,7 +69,7 @@ def checkSessionFlags(sessionFlags):
     if sessionFlags & 0x00020000:
         _flags.append('DQ')
     if sessionFlags & 0x00040000:
-        _flags.append('SERVICIBLE')
+        _flags.append('SERVICEABLE')
     if sessionFlags & 0x00080000:
         _flags.append('FURLED')
     if sessionFlags & 0x0010000:

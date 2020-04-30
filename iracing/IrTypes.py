@@ -203,6 +203,8 @@ class RunData:
     sessionTime = -1
     sessionToD = -1
     estLaptime = 0
+    lapNo = 0
+    timeInLap = -1
 
     def update(self, ir):
         _changed = False
@@ -218,6 +220,8 @@ class RunData:
 
         self.sessionTime = ir['SessionTime']
         self.sessionToD = ir['SessionTimeOfDay']
+        self.lapNo = ir['Lap']
+        self.timeInLap = ir['LapCurrentLapTime']
         if self.fuelLevel == 0:
             _changed = False
             
@@ -230,6 +234,8 @@ class RunData:
         _dict['sessionTime'] = self.sessionTime
         _dict['sessionToD'] = self.sessionToD
         _dict['estLaptime'] = self.estLaptime
+        _dict['lapNo'] = self.lapNo
+        _dict['timeInLap'] = self.timeInLap
 
         return _dict
 
