@@ -148,10 +148,8 @@ class LapData:
         return _lapdata
 
     def lapDataMessage(self, state):
-        _lapMsg = toMessageJson('lapdata', state, self.toDict())
-        return json.dumps(_lapMsg)
-        
-
+        return toMessageJson('lapdata', state, self.toDict())
+     
 class SessionInfo:
     sessionId = ''
     track = ''
@@ -197,7 +195,7 @@ class SessionInfo:
         return _info
 
     def sessionDataMessage(self, state):
-        return json.dumps(toMessageJson('sessionInfo', state, self.toDict()))
+        return toMessageJson('sessionInfo', state, self.toDict())
 
 class RunData:
     fuelLevel = 0
@@ -236,7 +234,7 @@ class RunData:
         return _dict
 
     def runDataMessage(self, state):
-        return json.dumps(toMessageJson('runData', state, self.toDict()))
+        return toMessageJson('runData', state, self.toDict())
 
     def syncData(self, ir, state):
         _syncData = {}
@@ -249,7 +247,7 @@ class RunData:
         return _syncData
 
     def syncDataMessage(self, state, ir):
-        return json.dumps(toMessageJson('syncData', state, self.syncData(ir, state)))
+        return toMessageJson('syncData', state, self.syncData(ir, state))
 
 class EventData:
     sessionTime = 0.0
@@ -296,7 +294,7 @@ class EventData:
         return _dict
 
     def eventDataMessage(self, state):
-        return json.dumps(toMessageJson('event', state, self.toDict()))
+        return toMessageJson('event', state, self.toDict())
 
 def toMessageJson(type, state, payload):
     _msg = {}

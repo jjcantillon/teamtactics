@@ -47,7 +47,7 @@ class Connector:
         elif self.postUrl != '':
             print('Using Url ' + self.postUrl + ' to publish events')
             if config.has_option('connect', 'clientAccessToken'):
-                headers = { 'x-teamtactics-token': config['connect']['clientAccessToken']}
+                self.headers = { 'x-teamtactics-token': config['connect']['clientAccessToken'], 'Content-Type': 'application/json'}
 
         if config.has_option('global', 'logfile'):
             logging.basicConfig(filename=str(config['global']['logfile']),level=logging.INFO,format='%(asctime)s$%(message)s')
@@ -56,8 +56,8 @@ class Connector:
         try:
             logging.info(jsonData)
             if self.postUrl != '':
-                response = requests.post(self.postUrl, json=jsonData, timeout=10.0, headers=headers)
-                return response.json()
+                response = requests.post(self.postUrl, data=jsonData, headers=self.headers, timeout=10.0)
+                return response
 
         except Exception as ex:
             print('Unable to publish data: ' + str(ex))
